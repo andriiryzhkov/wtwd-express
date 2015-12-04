@@ -24,3 +24,15 @@ npm install
 npm install --save mysql
 npm install --save express-myconnection
 ```
+
+Для запуска сервера виконайте команду
+
+```
+npm start
+```
+
+Ваш сайт буде доступний за адресою
+
+```
+http://localhost:3000/
+```

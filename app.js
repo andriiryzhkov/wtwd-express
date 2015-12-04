@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Оголошення для роботи з базою даних MySQL
+var connection  = require('express-myconnection');
+var mysql = require('mysql');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -21,6 +25,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Встановлення підключення до бази даних в якості middleware
+app.use(
+    connection(mysql,{
+        host: 'localhost',   // адреса сервера бази даних
+        user: 'root',        // користувач бази даних
+        password : '153426', // пароль
+        port : 3306,
+        database:'utilities' // назва бази даних
+    },'request')
+);
 
 app.use('/', routes);
 app.use('/users', users);

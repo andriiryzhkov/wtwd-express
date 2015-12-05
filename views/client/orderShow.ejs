@@ -1,0 +1,84 @@
+<%- include ../layout/header.ejs %>
+<!-- Заголовок сторінки -->
+<div class="container">
+  <div class="page-header">
+    <h2>Інформація про вашу заявку</h2>
+  </div>
+</div>
+<div class="container">
+  <!-- Форма показу заявки та додавання повідомлення -->
+  <form method="post" action="/client/<%=data.order[0].id_order%>">
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label>Тип послуги</label>
+        <p class="form-control-static">
+          <%=data.order[0].title%>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label>Вміст</label>
+        <p class="form-control-static">
+          <%=data.order[0].content%>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Час створення</label>
+        <p class="form-control-static">
+          <%=data.order[0].create_time%>
+        </p>
+      </div>
+      <div class="col-md-6 form-group">
+        <label>Час завершення</label>
+        <p class="form-control-static">
+          <!-- Якщо час завершення не визначений (дорівнює NULL) -->
+          <!-- виводимо 'Ще в стадії виконання', інакше виводимо     -->
+          <!-- час завершення зі змінної data.order.             -->
+          <% if (data.order[0].complete_time == null) { %>
+            Ще в стадії виконання
+          <% } else { %>
+            <%=data.order[0].complete_time%>
+          <% } %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label>Повідомлення</label>
+        <div id="inputMessages">
+          <!-- Генеруємо список повідомлень зі змінної data.message -->
+          <% if (data.message.length) {
+            for (var i = 0; i < data.message.length; i++) { %>
+            <div class="row message-item">
+              <div class="col-md-4">
+                <%=data.message[i].last_name+' '+data.message[i].first_name+' '+data.message[i].middle_name%>
+                  <br />
+                  <small>
+                    <%=data.message[i].create_time%>
+                  </small>
+              </div>
+              <div class="col-md-8">
+                <%=data.message[i].content%>
+              </div>
+            </div>
+            <% } } %>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <textarea class="form-control" rows="2" name="message"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button type="button" class="btn btn-default" onclick="window.history.back();">Закрити</button>
+        <button type="submit" class="btn btn-primary">Зберегти</button>
+      </div>
+    </div>
+  </form>
+</div>
+<%- include ../layout/footer.ejs %>

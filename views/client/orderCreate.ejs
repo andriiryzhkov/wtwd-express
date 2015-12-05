@@ -1,0 +1,40 @@
+<%- include ../layout/header.ejs %>
+<!-- Заголовок сторінки -->
+<div class="container">
+  <div class="page-header">
+    <h2>Створення нової заявки</h2>
+  </div>
+</div>
+<div class="container">
+  <!-- Форма створення нової заявки -->
+  <form method="post" action="/client/create">
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label>Тип послуги</label>
+        <select class="form-control" name="type">
+          <option>Не вибрано</option>
+          <!-- Генеруємо список типів послуг зі змінної data.type -->
+          <% if (data.type.length) {
+            for (var i = 0; i < data.type.length; i++) { %>
+            <option value="<%=data.type[i].id_type%>">
+              <%=data.type[i].title%>
+            </option>
+            <% } } %>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label>Вміст</label>
+        <textarea class="form-control" rows="3" name="content"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button type="button" class="btn btn-default" onclick="window.history.back();">Закрити</button>
+        <button type="submit" class="btn btn-primary">Зберегти</button>
+      </div>
+    </div>
+  </form>
+</div>
+<%- include ../layout/footer.ejs %>

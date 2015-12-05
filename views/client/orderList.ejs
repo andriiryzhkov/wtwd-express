@@ -1,0 +1,40 @@
+<%- include ../layout/header.ejs %>
+<!-- Заголовок сторінки -->
+<div class="container">
+  <div class="jumbotron">
+    <h1>Ваші заявки</h1>
+    <p>Залиште нову заявку на цій сторінці та відслідковуйте попередні.</p>
+    <p><a class="btn btn-primary btn-lg" href="create" role="button">Додати нову заявку</a></p>
+  </div>
+</div>
+<div class="container">
+      <!-- Генеруємо список заявок зі змінної data -->
+      <% if (data.length) {
+        for (var i = 0; i < data.length; i++) { %>
+          <a class="order-item" href="client/<%=data[i].id_order%>">
+            <div class="row">
+              <div class="col-md-1">
+                <% if (data[i].complete_time == null) { %>
+                  <span class="glyphicon glyphicon-wrench text-primary order-status" aria-hidden="true" title="Заявка на стадії виконання"></span>
+                <% } else { %>
+                  <span class="glyphicon glyphicon-ok text-success order-status" aria-hidden="true" title="Заявка виконана"></span>
+                <% } %>
+              </div>
+              <div class="col-md-2">
+                <%=data[i].title%><br />
+                <%=data[i].create_time%>
+              </div>
+              <div class="col-md-9">
+                <%=data[i].content%>
+              </div>
+            </div>
+          </a>
+        <% }
+        } else { %>
+          <!-- Якщо заявок немає... -->
+          <div class="row">
+            <div class="col-md-12">Немає заявок</div>
+          </div>
+        <% } %>
+</div>
+<%- include ../layout/footer.ejs %>

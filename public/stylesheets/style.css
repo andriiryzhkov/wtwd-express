@@ -53,6 +53,30 @@ body {
   margin-bottom: 30px;
 }
 
+.order-item {
+  display: block;
+  color: #464646;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-item:last-of-type {
+  border-bottom: none;
+}
+
+.order-status {
+  font-size: 2em;
+}
+
+.message-item {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.message-item:last-of-type {
+  border-bottom: none;
+}
+
 footer {
   border-top: 1px solid #ddd;
   padding: 30px 0;

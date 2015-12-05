@@ -16,8 +16,7 @@
           <!-- Генеруємо список користувачів зі змінної data.user -->
           <% if (data.user.length) {
             for (var i = 0; i < data.user.length; i++) { %>
-            <option value="<%=data.user[i].id_user%>" <% if (data.user[i].id_user=d ata.order[0].user) { %> selected="selected"
-              <% } %>>
+            <option value="<%=data.user[i].id_user%>" <% if (data.user[i].id_user == data.order[0].user) { %> selected="selected"<% } %>>
                 <%=data.user[i].last_name+' '+data.user[i].first_name+' '+data.user[i].middle_name%>
             </option>
             <% } } %>
@@ -30,8 +29,7 @@
           <!-- Генеруємо список типів послуг зі змінної data.type -->
           <% if (data.type.length) {
             for (var i = 0; i < data.type.length; i++) { %>
-            <option value="<%=data.type[i].id_type%>" <% if (data.type[i].id_type=d ata.order[0].type) { %> selected="selected"
-              <% } %>>
+            <option value="<%=data.type[i].id_type%>" <% if (data.type[i].id_type == data.order[0].type) { %> selected="selected"<% } %>>
                 <%=data.type[i].title%>
             </option>
             <% } } %>
@@ -41,30 +39,28 @@
     <div class="row">
       <div class="col-md-12 form-group">
         <label>Вміст</label>
-        <textarea class="form-control" rows="3" name="content">
-          <%=data.order[0].content%>
-        </textarea>
+        <textarea class="form-control" rows="3" name="content"><%=data.order[0].content%></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 form-group">
         <label>Час створення</label>
-        <p class="form-control-static" id="inputCreateTime">
+        <p class="form-control-static">
           <%=data.order[0].create_time%>
         </p>
       </div>
       <div class="col-md-6 form-group">
         <label>Час завершення</label>
-        <p class="form-control-static" id="inputCompleteTime">
+        <p class="form-control-static">
           <!-- Якщо час завершення не визначений (дорівнює NULL) -->
           <!-- вивидимо чекбокс 'Завершити', інакше виводимо     -->
           <!-- час завершення зі змінної data.order.             -->
           <% if (data.order[0].complete_time == null) { %>
             <span>Завершити </span>
             <input type="checkbox" name="complete">
-            <% } else { %>
-              <%=data.order[0].complete_time%>
-                <% } %>
+          <% } else { %>
+            <%=data.order[0].complete_time%>
+          <% } %>
         </p>
       </div>
     </div>
@@ -75,13 +71,13 @@
           <!-- Генеруємо список повідомлень зі змінної data.message -->
           <% if (data.message.length) {
             for (var i = 0; i < data.message.length; i++) { %>
-            <div class="row">
+            <div class="row message-item">
               <div class="col-md-4">
                 <%=data.message[i].last_name+' '+data.message[i].first_name+' '+data.message[i].middle_name%>
-                  <br />
-                  <small>
-                    <%=data.message[i].create_time%>
-                  </small>
+                <br />
+                <small>
+                  <%=data.message[i].create_time%>
+                </small>
               </div>
               <div class="col-md-8">
                 <%=data.message[i].content%>

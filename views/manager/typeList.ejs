@@ -1,0 +1,39 @@
+<%- include ../layout/header.ejs %>
+<!-- Заголовок сторінки -->
+<div class="container">
+  <div class="page-header">
+    <h2>Список типів послуг</h2>
+  </div>
+</div>
+<div class="container">
+  <a type="button" class="btn btn-primary btm-add" href="types/create">Додати тип послуги</a>
+  <!-- Таблиця списку заявок -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Назва</th>
+        <th width="80px">Операції</th>
+      </tr>
+    </thead>
+    <tbody id="dataTable">
+      <!-- Генеруємо список типів послуг зі змінної data -->
+      <% if (data.length) {
+        for (var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%=data[i].title%></td>
+            <td>
+              <a class="btn btn-primary btn-sm" href="types/edit/<%=data[i].id_type%>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+              <a class="btn btn-danger btn-sm" href="types/delete/<%=data[i].id_type%>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </td>
+          </tr>
+        <% }
+        } else { %>
+          <!-- Якщо типів послуг немає... -->
+          <tr>
+            <td colspan="2">Немає типів послуг</td>
+          </tr>
+        <% } %>
+    </tbody>
+  </table>
+</div>
+<%- include ../layout/footer.ejs %>

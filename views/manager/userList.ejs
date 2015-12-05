@@ -1,0 +1,47 @@
+<%- include ../layout/header.ejs %>
+<!-- Заголовок сторінки -->
+<div class="container">
+  <div class="page-header">
+    <h2>Список користувачів</h2>
+  </div>
+</div>
+<div class="container">
+  <a type="button" class="btn btn-primary btm-add" href="users/create">Додати користувача</a>
+  <!-- Таблиця списку користувачів -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>П.І.Б.</th>
+        <th>Email</th>
+        <th>Адреса</th>
+        <th>Телефон</th>
+        <th>Договір</th>
+        <th width="80px">Операції</th>
+      </tr>
+    </thead>
+    <tbody id="dataTable">
+      <!-- Генеруємо список користувачів зі змінної data -->
+      <% if (data.length) {
+        for (var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%=data[i].first_name%></td>
+            <td><%=data[i].email%></td>
+            <td><%=data[i].address%></td>
+            <td><%=data[i].phone%></td>
+            <td><%=data[i].contract%></td>
+            <td>
+              <a class="btn btn-primary btn-sm" href="users/edit/<%=data[i].id_user%>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+              <a class="btn btn-danger btn-sm" href="users/delete/<%=data[i].id_user%>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </td>
+          </tr>
+        <% }
+        } else { %>
+          <!-- Якщо користувачів немає... -->
+          <tr>
+            <td colspan="6">Немає користувачів</td>
+          </tr>
+        <% } %>
+    </tbody>
+  </table>
+</div>
+<%- include ../layout/footer.ejs %>

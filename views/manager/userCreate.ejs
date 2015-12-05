@@ -1,0 +1,71 @@
+<%- include ../layout/header.ejs %>
+<!-- Заголовок сторінки -->
+<div class="container">
+  <div class="page-header">
+    <h2>Створення користувача</h2>
+  </div>
+</div>
+<div class="container">
+  <!-- Форма створення нового користувача -->
+  <form method="post" action="/manager/users/create">
+    <div class="row">
+      <div class="col-md-4 form-group">
+        <label>Прізвище</label>
+        <input type="text" class="form-control" name="last_name">
+      </div>
+      <div class="col-md-4 form-group">
+        <label>Ім'я</label>
+        <input type="text" class="form-control" name="first_name">
+      </div>
+      <div class="col-md-4 form-group">
+        <label>По батькові</label>
+        <input type="text" class="form-control" name="middle_name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email">
+      </div>
+      <div class="col-md-4 form-group">
+        <label>Пароль</label>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <div class="col-md-4 form-group">
+        <label>Менеджер</label><br />
+        <input type="checkbox" name="manager">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 form-group">
+        <label>Адреса</label>
+        <input type="text" class="form-control" name="address">
+      </div>
+      <div class="col-md-4 form-group">
+        <label>Місто</label>
+        <input type="text" class="form-control" name="city">
+      </div>
+      <div class="col-md-4 form-group">
+        <label>Індекс</label>
+        <input type="number" class="form-control" name="postcode">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 form-group">
+        <label>Телефон</label>
+        <input type="text" class="form-control" name="phone">
+      </div>
+      <div class="col-md-4 form-group">
+        <label>Договір</label>
+        <input type="text" class="form-control" name="contract">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button type="button" class="btn btn-default" onclick="window.history.back();">Закрити</button>
+        <button type="submit" class="btn btn-primary">Зберегти</button>
+      </div>
+    </div>
+  </form>
+</div>
+<%- include ../layout/footer.ejs %>

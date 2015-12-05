@@ -1,11 +1,46 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include layout/header.ejs %>
+<div class="container">
+  <!-- Основний банер сайту -->
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img class="img-responsive center-block" src="/images/utility.png" alt="Лого">
+    </div>
+    <div class="col-md-8 text-center announcement">
+      <h1 class="text-primary">Замовлення комунальних послуг</h1>
+      <p>Залиште заявку на виконання комунальних робіт в нашій системі он-лайн. Ми опрацюємо її в якнайшвидше та призначимо час, коли наші спеціалісти займуться вирішенням Вашої проблеми. Ми триматимемо Вас в курсі стану виконання вашої заявки.</p>
+      <a class="btn btn-primary btn-lg" href="/client/add" role="button">Замовити послугу</a>
+    </div>
+  </div>
+  <!-- Порядок роботи сервісу -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Як це працює?</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 text-center service">
+      <div class="service-img">
+        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+      </div>
+      <h3>1 Подача заявки</h3>
+      <p>Зареєструйте Вашу заявку в системі, опишіть суть проблеми, вкажіть бажаний час для візиту наших спеціалістів.</p>
+    </div>
+    <div class="col-sm-4 text-center service">
+      <div class="service-img">
+        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+      </div>
+      <h3>2 Призначення часу</h3>
+      <p>Як тільки Ваша заявка буде оброблена, буде призначено час візиту наших спеціалістів.</p>
+    </div>
+    <div class="col-sm-4 text-center service">
+      <div class="service-img">
+        <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+      </div>
+      <h3>3 Відстеження стану</h3>
+      <p>На будь-якому етапі Ви можете відправити нам повідомлення. Ми намагатимемось врахувати Ваші побажання.</p>
+    </div>
+  </div>
+</div>
+<%- include layout/footer.ejs %>

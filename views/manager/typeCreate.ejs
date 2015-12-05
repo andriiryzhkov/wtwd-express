@@ -1,0 +1,25 @@
+<%- include ../layout/header.ejs %>
+<!-- Заголовок сторінки -->
+<div class="container">
+  <div class="page-header">
+    <h2>Створення типу послуги</h2>
+  </div>
+</div>
+<div class="container">
+  <!-- Форма створення нового типу послуги -->
+  <form method="post" action="/manager/types/create">
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label>Назва типу послуги</label>
+        <input type="text" class="form-control" name="title">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button type="button" class="btn btn-default" onclick="window.history.back();">Закрити</button>
+        <button type="submit" class="btn btn-primary">Зберегти</button>
+      </div>
+    </div>
+  </form>
+</div>
+<%- include ../layout/footer.ejs %>

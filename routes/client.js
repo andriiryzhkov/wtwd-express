@@ -12,7 +12,7 @@ var router = express.Router();
 // Виведення списку заявок поточного користувача
 router.get('/', function(req, res, next) {
   // Визначаємо поточного користувача
-  var userId = 1; // Треба реалізувати після авторизації
+  var userId = req.user.id_user;
   // Відкриваємо з'єднання з базою даних
   req.getConnection(function(err, connection) {
     // В разі помилки завершуємо з'єднання
@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
 // Створення нової заявки
 router.get('/create', function(req, res, next) {
   // Визначаємо поточного користувача
-  var userId = 1; // Треба реалізувати після авторизації
+  var userId = req.user.id_user;
   // Відкриваємо з'єднання з базою даних
   req.getConnection(function(err, connection) {
     // В разі помилки завершуємо з'єднання
@@ -56,7 +56,7 @@ router.get('/create', function(req, res, next) {
 // Обробка результату cтворення заявки
 router.post('/create', function(req, res, next) {
   // Визначаємо поточного користувача
-  var userId = 1; // Треба реалізувати після авторизації
+  var userId = req.user.id_user;
   // Отримуємо дані передані формою та зберігаємо їх і змінну input
   var input = JSON.parse(JSON.stringify(req.body));
   // Відкриваємо з'єднання з базою даних
@@ -139,7 +139,7 @@ router.post('/:id', function(req, res, next) {
   // Отмируємо номер (ідентифікатор) заявки з HTTP-запиту
   var id = req.params.id;
   // Визначаємо поточного користувача
-  var userId = 1; // Треба реалізувати після авторизації
+  var userId = req.user.id_user;
   // Отримуємо дані передані формою та зберігаємо їх і змінну input
   var input = JSON.parse(JSON.stringify(req.body));
   // Відкриваємо з'єднання з базою даних

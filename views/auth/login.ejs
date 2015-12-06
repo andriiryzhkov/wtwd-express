@@ -1,0 +1,21 @@
+<%- include ../layout/header.ejs %>
+<div class="container login">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="col-md-4 col-md-offset-4" action="/login" method="post">
+        <h2>Вхід</h2>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Пароль">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary btn-block" value="Відправити" />
+          <span class="pull-right"><a href="/register">Нова реєстрація</a></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include ../layout/footer.ejs %>

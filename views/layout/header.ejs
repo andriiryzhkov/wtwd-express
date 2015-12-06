@@ -29,7 +29,21 @@
       <!-- Всі посилання головного меню -->
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right" id="menu">
-          <li><a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Вхід</a></li>
+          <!-- Формуємо головне меню в залежності від автентифікації користувача -->
+          <!-- Якщо користувач є, тобто автентифікований -->
+          <% if (user) { %>
+            <!-- Та якщо для користувача встановлені права менеджера -->
+            <% if (user.manager) { %>
+              <li><a href="/manager/users">Користувачі</a></li>
+              <li><a href="/manager/orders">Заявки</a></li>
+              <li><a href="/manager/types">Типи послуг</a></li>
+            <% } else { %> <!-- Якщо немає прав менеджера -->
+              <li><a href="/client/me"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%=user.name%></a></li>
+            <% } %> <!-- Закриття умови щодо менеджера -->
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Вихід</a></li>
+          <% } else { %> <!-- Якщо користувач не авторизований -->
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Вхід</a></li>
+          <% } %>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->

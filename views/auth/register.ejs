@@ -1,0 +1,39 @@
+<%- include ../layout/header.ejs %>
+<div class="container register">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="col-md-5 col-md-offset-3" action="/register" method="post">
+        <h2>Реєстрація користувача</h2>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" name="email" required="required">
+        </div>
+        <div class="form-group">
+          <label>Ім'я</label>
+          <input type="text" class="form-control" name="first_name" required="required">
+        </div>
+        <div class="form-group">
+          <label>По батькові</label>
+          <input type="text" class="form-control" name="middle_name" required="required">
+        </div>
+        <div class="form-group">
+          <label>Прізвище</label>
+          <input type="text" class="form-control" name="last_name" required="required">
+        </div>
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" class="form-control" name="password" required="required">
+        </div>
+        <div class="form-group">
+          <label>Номер договору</label>
+          <input type="text" class="form-control" name="contract">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary btn-block" value="Відправити" />
+          <span class="pull-right"><a href="/login">Існуючий користувач</a></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include ../layout/footer.ejs %>

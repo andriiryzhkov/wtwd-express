@@ -76,6 +76,57 @@ router.post('/create', function(req, res, next) {
   });
 });
 
+// Редагування профіля клаєнта
+router.get('/me', function(req, res, next) {
+  // Отмируємо номер поточного користувача
+  var id = req.user.id_user;
+  // Відкриваємо з'єднання з базою даних
+  req.getConnection(function(err, connection) {
+    // В разі помилки завершуємо з'єднання
+    if (err) return next(err);
+    // Виконуємо запит до БД - вибираємо необхідного користувача
+    connection.query('SELECT * FROM user WHERE id_user = ?', [id], function(err, rows) {
+      if (err) return next(err);
+      // Викликаємо шаблон веб-сторінки userList та передаємо до нього дані data
+      res.render('client/userEdit', {
+        data: rows
+      });
+    });
+  });
+});
+
+// Обробка результату редагування профіля клаєнта
+router.post('/me', function(req, res, next) {
+  // Отримуємо дані передані формою та зберігаємо їх у змінну input
+  var input = JSON.parse(JSON.stringify(req.body));
+  // Отмируємо номер поточного користувача
+  var id = req.user.id_user;
+  // Відкриваємо з'єднання з базою даних
+  req.getConnection(function(err, connection) {
+    // В разі помилки завершуємо з'єднання
+    if (err) return next(err);
+    // Формуємо об'єкт даних відредагованого користувача
+    var data = {
+      email: input.email,
+      password: input.password,
+      last_name: input.last_name,
+      first_name: input.first_name,
+      middle_name: input.middle_name,
+      address: input.address,
+      city: input.city,
+      postcode: input.postcode,
+      phone: input.postcode,
+      contract: input.contract
+    };
+    // Виконуємо запит до БД - оновлюємо інформацію користувача
+    connection.query("UPDATE user set ? WHERE id_user = ? ", [data, id], function(err, rows) {
+      if (err) return next(err);
+      // В разі успішної операції переходимо до головної сторінки
+      res.redirect('/');
+    });
+  });
+});
+
 // Перегляд заявки та додавання повідомлень
 router.get('/:id', function(req, res, next) {
   // Отмируємо номер (ідентифікатор) заявки з HTTP-запиту
